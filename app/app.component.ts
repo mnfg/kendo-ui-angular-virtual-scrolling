@@ -24,10 +24,6 @@ import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
           height: 450px;
           overflow-y: auto;
         }
-        .k-grid {
-          min-height: 0px;
-          min-width: 0px;
-        }
         .k-grid tbody td {
             white-space: nowrap;
             line-height: 20px;
@@ -44,7 +40,6 @@ import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
             [pageSize]="pageSize"
             scrollable="virtual"
             [rowHeight]="36"
-            [style.height.%]="100"
             (pageChange)="pageChange($event)"
             [navigable]="true"
           >
