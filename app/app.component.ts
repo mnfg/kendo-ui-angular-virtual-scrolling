@@ -13,6 +13,21 @@ import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
      */
     encapsulation: ViewEncapsulation.None,
     styles: [`
+        .container{
+          display: flex;
+          flex-direction: column;
+        }
+        .header {
+          margin: 20px 0;
+        }
+        .content {
+          height: 450px;
+          overflow-y: auto;
+        }
+        .k-grid {
+          min-height: 0px;
+          min-width: 0px;
+        }
         .k-grid tbody td {
             white-space: nowrap;
             line-height: 20px;
@@ -20,22 +35,28 @@ import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
         }
     `],
     template: `
-      <kendo-grid
-          [data]="gridView"
-          [skip]="skip"
-          [pageSize]="pageSize"
-          scrollable="virtual"
-          [rowHeight]="36"
-          [height]="450"
-          (pageChange)="pageChange($event)"
-          [navigable]="true"
-        >
-        <kendo-grid-column field="id" [width]="80" title="ID"></kendo-grid-column>
-        <kendo-grid-column field="firstName" title="First Name" [width]="130"></kendo-grid-column>
-        <kendo-grid-column field="lastName" title="Last Name" [width]="130"></kendo-grid-column>
-        <kendo-grid-column field="city" title="City" [width]="130"></kendo-grid-column>
-        <kendo-grid-column field="title" title="Title" [width]="180"></kendo-grid-column>
-      </kendo-grid>
+    <div class="container">
+      <div class="header"> Virtual Scrolling </div>
+      <div class="content"> 
+        <kendo-grid
+            [data]="gridView"
+            [skip]="skip"
+            [pageSize]="pageSize"
+            scrollable="virtual"
+            [rowHeight]="36"
+            [style.height.%]="100"
+            (pageChange)="pageChange($event)"
+            [navigable]="true"
+          >
+          <kendo-grid-column field="id" [width]="80" title="ID"></kendo-grid-column>
+          <kendo-grid-column field="firstName" title="First Name" [width]="130"></kendo-grid-column>
+          <kendo-grid-column field="lastName" title="Last Name" [width]="130"></kendo-grid-column>
+          <kendo-grid-column field="city" title="City" [width]="130"></kendo-grid-column>
+          <kendo-grid-column field="title" title="Title" [width]="180"></kendo-grid-column>
+        </kendo-grid> 
+      </div>
+    </div>
+      
   `
 })
 export class AppComponent {
